@@ -2,19 +2,15 @@ import React, { useState } from 'react'
 import '../styles/App.css';
 
 const App = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  
-  const handleToggleClick = () => {
-    setIsDarkMode(!isDarkMode);
-  };
 
-  
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const changeHandler = () => {
+      setIsDarkMode(!isDarkMode);
+  }
   return (
-    <div id="main" style={{ backgroundColor: isDarkMode ?  "rgb(255, 255, 255)" :"rgb(0, 0, 0)", color: isDarkMode ?   "rgb(0, 0, 0)" : "rgb(255, 255, 255)"}}>
-      <h1>{isDarkMode ?   "Light Mode Activated" : "Dark Mode Activated"}</h1>
-      <button onClick={handleToggleClick}>
-        {isDarkMode ?   "Switch to Dark Mode" : "Switch to Light Mode"}
-      </button>
+    <div id="main" className={isDarkMode?'dark':'light'}>
+      <h1>{isDarkMode ? "Dark Mode Activated":"Light Mode Activated"}</h1>
+      <button onClick={changeHandler}>{isDarkMode ?'Switch to Light Mode':'Switch to Dark Mode'}</button>
     </div>
   )
 }
